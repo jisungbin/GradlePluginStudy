@@ -8,7 +8,6 @@
 
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.AppCompat.DayNight"
             android:exported="true">
 
             <intent-filter>
