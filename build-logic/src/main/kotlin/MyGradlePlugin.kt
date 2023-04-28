@@ -5,13 +5,15 @@ import org.gradle.kotlin.dsl.register
 
 class MyGradlePlugin : Plugin<Project> {
     override fun apply(project: Project) {
-        with(project) {
-            println("Applied MyGradlePlugin")
-            val extension = extensions.create<MyGradlePluginExtension>("myGradlePlugin")
+        println("[${project.name}] Applied MyGradlePlugin")
 
-            afterEvaluate {
-                tasks.register<MyGradlePluginTask>("myGradlePlugin", extension)
-            }
-        }
+        val extension = project.extensions.create<MyGradlePluginExtension>(
+            name = "myGradlePlugin",
+            project,
+        )
+        project.tasks.register<MyGradlePluginTask>(
+            name = "myGradlePlugin",
+            extension,
+        )
     }
 }
